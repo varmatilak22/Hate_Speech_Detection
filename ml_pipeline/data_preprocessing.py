@@ -95,7 +95,11 @@ def clean_data(text):
     """
     Clean the text data
     """
-    nltk.download('stopwords')
+    current_dir=os.path.dirname(__file__)
+    out_dir=os.path.dirname(current_dir)
+    out_dir_2=os.path.join(out_dir,'data')
+    file_path=os.path.join(out_dir_2,'corpora')
+    nltk.data.path.append(file_path)
     #Removal of stopwords
     from nltk.corpus import stopwords
     stopwords=set(stopwords.words('english'))
