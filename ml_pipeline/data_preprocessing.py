@@ -95,6 +95,7 @@ def clean_data(text):
     """
     Clean the text data
     """
+    nltk.download('stopwords')
     #Removal of stopwords
     from nltk.corpus import stopwords
     stopwords=set(stopwords.words('english'))
