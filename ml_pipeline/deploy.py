@@ -6,15 +6,26 @@ from data_preprocessing import clean_data
 import os
 
 ##Load the model
-current_dir=os.path.dirname(__file__)
-out_dir=os.path.dirname(current_dir)
-out_dir_2=os.path.join(out_dir,'model')
-file_path=os.path.join(out_dir_2,'decisiontree.pkl')
-cv_path=os.path.join(out_dir_2,'countvectorizer.pkl')
+@st.cache_resource
+def load_model_and_vectorizer():
+    """
+    Loading the model and Count vectorizer for the input text
+    """
+    #Os Paths 
+    current_dir=os.path.dirname(__file__)
+    out_dir=os.path.dirname(current_dir)
+    out_dir_2=os.path.join(out_dir,'model')
+    file_path=os.path.join(out_dir_2,'decisiontree.pkl')
+    cv_path=os.path.join(out_dir_2,'countvectorizer.pkl')
+    
+    model=joblib.load(file_path)
+    cv=joblib.load(cv_path)
+    return model,cv
 
-model=joblib.load(file_path)
-cv=joblib.load(cv_path)
 
+model,cv=load_model_and_vectorizer()
+
+@st.cache_data
 def predict(text):
     preprocess_text=clean_data(text)
     vectorized_text=cv.transform([preprocess_text])
