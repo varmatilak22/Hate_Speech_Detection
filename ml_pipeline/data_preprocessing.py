@@ -9,6 +9,7 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.model_selection import train_test_split
 import joblib
+from helper_function import absolute_path
 
 def load_data():
     """
@@ -81,11 +82,14 @@ def text_preprocessing(data):
     X_train,X_test,y_train,y_test=train_test_split(X,y,test_size=0.2,random_state=1)
     print(X_train.shape[0],len(y_train),X_test.shape[0],len(y_test))
     X_train_vectorizer=cv.fit_transform(X_train)
-    current_dir=os.path.dirname(__file__)
-    out_dir=os.path.dirname(current_dir)
-    out_dir_2=os.path.join(out_dir,'model')
-    file_path=os.path.join(out_dir_2,'countvectorizer.pkl')
-    joblib.dump(cv,file_path)
+    
+
+    file_path,cv_path=absolute_path()
+    #current_dir=os.path.dirname(__file__)
+    #out_dir=os.path.dirname(current_dir)
+    #out_dir_2=os.path.join(out_dir,'model')
+    #file_path=os.path.join(out_dir_2,'countvectorizer.pkl')
+    joblib.dump(cv,cv_path)
     return X_train_vectorizer,X_test,y_train,y_test
 
 

@@ -4,3 +4,5 @@ pandas
 scikit-learn
 nltk
 joblib
+matplotlib
+seaborn

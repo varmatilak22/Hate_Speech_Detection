@@ -15,8 +15,9 @@ def evaluate(model_path,cv_path,X_test,y_test):
     consfu_mat=confusion_matrix(y_test,predict)
     print(consfu_mat)
 
-    report=classification_report(y_test,predict)
+    report=classification_report(y_test,predict,output_dict=True)
     print(report)
+    return consfu_mat,report
 
 
 if __name__=='__main__':
@@ -30,4 +31,4 @@ if __name__=='__main__':
     file_path=os.path.join(out_dir_2,'decisiontree.pkl')
     cv_path=os.path.join(out_dir_2,'countvectorizer.pkl')
     print(file_path)
-    evaluate(file_path,cv_path,X_test,y_test)
+    consfu_mat,report=evaluate(file_path,cv_path,X_test,y_test)
