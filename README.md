@@ -2,6 +2,7 @@
 
 ## Overview
 This project focuses on detecting hate speech in text data using natural language processing (NLP) techniques. The goal is to develop machine learning models based on decision tree and random forest algorithms to automatically identify hate speech content in text.
+
 Project link [Hate_Speech_detection](https://hate-speech-recognition.streamlit.app/)
 
 ## Table of Contents
@@ -58,10 +59,5 @@ The final trained models are saved in the models directory. You can use them to 
 ## Contributing
 If you'd like to contribute to this project, please open an issue or create a pull request. All contributions are welcome! 🙌
 
-## License
-This project is licensed under the GECCS License - see the LICENSE file for details.
-
 ## Acknowledgments
-Special thanks to Dataset Source for providing the hate speech dataset.🙏
-
-Feel free to replace placeholders like `yourusername` and `hate-speech-detection` with appropriate information for your project. Update the license file (`LICENSE`) accordingly.
+Kaggle
