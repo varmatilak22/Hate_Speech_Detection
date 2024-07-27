@@ -95,14 +95,32 @@ def clean_data(text):
     """
     Clean the text data
     """
-    current_dir=os.path.dirname(__file__)
-    out_dir=os.path.dirname(current_dir)
-    out_dir_2=os.path.join(out_dir,'data')
-    file_path=os.path.join(out_dir_2,'corpora')
-    nltk.data.path.append(file_path)
+    #current_dir=os.path.dirname(__file__)
+    #out_dir=os.path.dirname(current_dir)
+    #out_dir_2=os.path.join(out_dir,'data')
+    #file_path=os.path.join(out_dir_2,'corpora')
+    #nltk.data.path.append(file_path)
     #Removal of stopwords
     from nltk.corpus import stopwords
-    stopwords=set(stopwords.words('english'))
+    # Path where the stopwords corpus is located
+    nltk_data_dir = os.path.join(os.path.dirname(__file__), '../data')
+
+    # Ensure the directory exists
+    if not os.path.exists(nltk_data_dir):
+        os.makedirs(nltk_data_dir)
+
+    # Update NLTK data path
+    nltk.data.path.append(nltk_data_dir)
+    count=0
+    try:
+       # Test if stopwords can be accessed
+       stop_words = set(stopwords.words('english'))
+
+    except LookupError:
+       print("Stopwords resource not found. Please check the directory path and structure.")
+
+    #from nltk.corpus import stopwords
+    #stopwords=set(stopwords.words('english'))
     #print(stopwords)
 
     #Importing stemming
@@ -125,7 +143,7 @@ def clean_data(text):
     text=re.sub('\w*\d\w*','',text)
     #print(text)
     
-    text=[word for word in text.split(" ") if word not in stopwords]
+    text=[word for word in text.split(" ") if word not in stop_words]
     #print(text)
     text=" ".join(text)
     #print(text)
