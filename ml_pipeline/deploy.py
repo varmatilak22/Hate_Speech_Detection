@@ -5,7 +5,7 @@ import os
 from data_preprocessing import clean_data
 
 # Streamlit app configuration
-st.set_page_config(page_title="Hate Speech Recognition", layout="wide")
+st.set_page_config(page_title="Hate Speech Recognition")
 
 # Custom CSS for navbar title
 
